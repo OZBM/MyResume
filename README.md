@@ -1,70 +1,108 @@
-# Omar Ben Mustapha - Resume Website
+# Omar Ben Mustapha's Resume Website
 
-A modern, interactive resume website built with Next.js, featuring a Gemini-powered AI chatbot that can answer questions about Omar's professional experience.
+A personal resume website built with Next.js, React, and TailwindCSS, featuring an AI chatbot powered by Google's Gemini AI.
 
 ## Features
 
-- 🎨 Modern, responsive design with animations
-- 📱 Mobile-friendly layout
-- 🤖 AI-powered chatbot using Gemini 2.0 Flash
-- 🌙 Light/dark mode support
-- 🚀 Fast performance with Next.js
+- Modern, responsive design
+- AI-powered chatbot that answers questions about my professional experience
+- Optimized for deployment on Cloudflare Pages
 
-## Getting Started
+## Local Development
 
-### Prerequisites
-
-- Node.js 18.x or later
-- A Gemini API key from Google AI Studio
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/my-resume.git
-cd my-resume
-```
-
-2. Install dependencies
-```bash
+# Install dependencies
 npm install
-```
 
-3. Create a `.env.local` file in the root directory with your Gemini API key:
-```
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-4. Run the development server
-```bash
+# Run the development server
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment to Cloudflare from GitHub
 
-## Obtaining a Gemini API Key
+This project is set up for deployment on Cloudflare Pages directly from GitHub. Follow these steps to deploy:
 
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Create a new API key
-3. Copy the API key to your `.env.local` file
+### 1. Push Your Code to GitHub
 
-## Security Note
+Make sure your code is pushed to a GitHub repository:
 
-The Gemini API key is server-side only and never exposed to the client. The API route acts as a secure proxy for all communications with the Gemini API.
+```bash
+# Initialize git repository if not already done
+git init
 
-## Technologies Used
+# Add all files
+git add .
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TailwindCSS](https://tailwindcss.com/) - CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [Google Generative AI](https://ai.google.dev/docs) - Gemini API for chatbot
-- [Zustand](https://github.com/pmndrs/zustand) - State management
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+# Commit changes
+git commit -m "Initial commit"
 
-## Deployment
+# Add your GitHub repository as remote
+git remote add origin https://github.com/yourusername/yourrepository.git
 
-This site can be deployed to platforms like Vercel or Netlify. Make sure to add your Gemini API key to the environment variables in your deployment platform.
+# Push to GitHub
+git push -u origin main
+```
 
-## License
+### 2. Connect to Cloudflare Pages
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Sign in to your Cloudflare account at [dash.cloudflare.com](https://dash.cloudflare.com)
+2. Navigate to **Pages** from the sidebar
+3. Click **Create a project** > **Connect to Git**
+4. Select your GitHub account and authorize Cloudflare
+5. Select the repository you pushed your code to
+
+### 3. Configure Your Build Settings
+
+Configure the build settings as follows:
+
+- **Project name**: Choose a name for your project (e.g., `omar-resume`)
+- **Production branch**: `main` (or your default branch)
+- **Framework preset**: Next.js
+- **Build command**: `npm run deploy:build`
+- **Build output directory**: `.open-next/assets`
+- **Root directory**: `/` (root of your project)
+
+### 4. Add Environment Variables
+
+Add the following environment variables:
+
+- `GEMINI_API_KEY`: Your Google Gemini API key
+
+### 5. Deploy
+
+Click **Save and Deploy**. Cloudflare will build and deploy your site. Once the deployment is complete, you'll get a URL to access your site (e.g., `https://yourproject.pages.dev`).
+
+### 6. Configure Custom Domain (Optional)
+
+To use a custom domain:
+
+1. In your Cloudflare Pages project, go to **Custom domains**
+2. Click **Set up a custom domain**
+3. Enter your domain name and follow the instructions
+
+### 7. Automatic Deployments
+
+After setup, any push to your main branch will trigger an automatic deployment to Cloudflare Pages.
+
+## Manual Deployment
+
+If you need to deploy manually from your local machine:
+
+```bash
+# Build the project for deployment
+npm run deploy:build
+
+# Deploy to Cloudflare (requires Cloudflare CLI setup)
+npm run deploy:publish
+```
+
+Note: For manual deployment, you need to have the Cloudflare Wrangler CLI authenticated with your account.
+
+## Environment Variables
+
+- `GEMINI_API_KEY`: Required for the chatbot functionality. Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+
+Create a `.env.local` file with your API key to enable the chatbot locally:
+
+```
+GEMINI_API_KEY=your_api_key_here

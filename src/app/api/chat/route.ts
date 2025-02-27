@@ -1,8 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-// Safety measure to ensure we're running on the server
-export const runtime = "edge";
+// Using Node.js runtime for Cloudflare compatibility with OpenNext
 
 export async function POST(request: Request) {
   try {
