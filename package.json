@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "deploy": "npx open-next build",
     "deploy:build": "npx open-next build",
     "deploy:publish": "npx wrangler deploy"
   },
