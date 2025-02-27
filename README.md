@@ -1,58 +1,70 @@
-# Next.js Framework Starter
+# Omar Ben Mustapha - Resume Website
 
-<!-- dash-content-start -->
+A modern, interactive resume website built with Next.js, featuring a Gemini-powered AI chatbot that can answer questions about Omar's professional experience.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## Features
 
-<!-- dash-content-end -->
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
-
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/myresume
-```
-
-A live public deployment of this template is available at [https://myresume.templates.workers.dev](https://myresume.templates.workers.dev)
+- 🎨 Modern, responsive design with animations
+- 📱 Mobile-friendly layout
+- 🤖 AI-powered chatbot using Gemini 2.0 Flash
+- 🌙 Light/dark mode support
+- 🚀 Fast performance with Next.js
 
 ## Getting Started
 
-First, run:
+### Prerequisites
 
+- Node.js 18.x or later
+- A Gemini API key from Google AI Studio
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
+git clone https://github.com/yourusername/my-resume.git
+cd my-resume
 ```
 
-Then run the development server (using the package manager of your choice):
+2. Install dependencies
+```bash
+npm install
+```
 
+3. Create a `.env.local` file in the root directory with your Gemini API key:
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+4. Run the development server
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Obtaining a Gemini API Key
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Create a new API key
+3. Copy the API key to your `.env.local` file
 
-## Deploying To Production
+## Security Note
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm run build`   | Build your production site                   |
-| `npm run preview` | Preview your build locally, before deploying |
-| `npm run deploy`  | Deploy your production site to Cloudflare    |
+The Gemini API key is server-side only and never exposed to the client. The API route acts as a secure proxy for all communications with the Gemini API.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/) - React framework
+- [TailwindCSS](https://tailwindcss.com/) - CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [Google Generative AI](https://ai.google.dev/docs) - Gemini API for chatbot
+- [Zustand](https://github.com/pmndrs/zustand) - State management
+- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This site can be deployed to platforms like Vercel or Netlify. Make sure to add your Gemini API key to the environment variables in your deployment platform.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
