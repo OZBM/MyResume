@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
   images: {
     remotePatterns: [
       {
@@ -11,7 +12,8 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com'
       }
-    ]
+    ],
+    unoptimized: true
   },
   env: {
     // Environment variables will be loaded from .env.local

@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Build with Open Next
-        run: npm run deploy
+      - name: Build static export
+        run: npm run build
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           
@@ -31,5 +31,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: Sv5gCNN6ZahxKGaigy-cql9oxaBu4iAu1tQDDE1c
-          command: pages deploy .open-next/assets --project-name=myresume
+          command: pages deploy out --project-name=myresume
           workingDirectory: .
