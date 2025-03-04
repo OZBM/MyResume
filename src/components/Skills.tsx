@@ -219,9 +219,19 @@ const Skills = () => {
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <h4 className="font-medium text-primary mb-2">Technology</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                 Passionate about technology, statistics, electronics. Experience with oscilloscope, Raspberry Pi, and research papers.
               </p>
+              <div className="w-full flex justify-center overflow-hidden rounded-lg">
+                <iframe
+                  width="100%"
+                  height="250"
+                  frameBorder="0"
+                  src="https://www.shadertoy.com/embed/WfXSRX?gui=true&t=10&paused=false&muted=false"
+                  allowFullScreen
+                  className="max-w-full"
+                ></iframe>
+              </div>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <h4 className="font-medium text-primary mb-2">Other Interests</h4>
