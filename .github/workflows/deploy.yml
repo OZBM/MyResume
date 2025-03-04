@@ -27,9 +27,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           
-      - name: Publish to Cloudflare
+      - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy
+          command: pages deploy .open-next/assets --project-name=myresume
           workingDirectory: .
