@@ -227,7 +227,7 @@ const Skills = () => {
                   width="100%"
                   height="250"
                   frameBorder="0"
-                  src="https://www.shadertoy.com/embed/WfXSRX?gui=true&t=10&paused=false&muted=false"
+                  src="https://www.shadertoy.com/embed/WfXSRX?gui=false&t=10&paused=false&muted=false"
                   allowFullScreen
                   className="max-w-full"
                 ></iframe>
