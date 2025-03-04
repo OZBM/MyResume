@@ -16,11 +16,12 @@ const nextConfig = {
     unoptimized: true
   },
   env: {
-    // Environment variables will be loaded from .env.local
+    // Explicitly set the Gemini API key for client and server components
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY || 'AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8',
   },
   // For security, the API key will be server-side only
   serverRuntimeConfig: {
-    geminiApiKey: process.env.GEMINI_API_KEY,
+    geminiApiKey: process.env.GEMINI_API_KEY || 'AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8',
   },
   publicRuntimeConfig: {
     // Public variables (non-sensitive) go here

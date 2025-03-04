@@ -68,11 +68,24 @@ Add the following environment variables:
 
 - `GEMINI_API_KEY`: Your Google Gemini API key
 
-### 5. Deploy
+### 5. Set up GitHub Secret for Automated Deployment
+
+For the GitHub Actions workflow to deploy correctly, you need to add your Gemini API key as a GitHub secret:
+
+1. Go to your GitHub repository
+2. Click on **Settings** > **Secrets and variables** > **Actions**
+3. Click **New repository secret**
+4. Name: `GEMINI_API_KEY`
+5. Value: Your Gemini API key (e.g., `AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8`)
+6. Click **Add secret**
+
+This secret is used by the GitHub Actions workflow to pass the API key to both the build process and the Cloudflare deployment.
+
+### 6. Deploy
 
 Click **Save and Deploy**. Cloudflare will build and deploy your site. Once the deployment is complete, you'll get a URL to access your site (e.g., `https://yourproject.pages.dev`).
 
-### 6. Configure Custom Domain (Optional)
+### 7. Configure Custom Domain (Optional)
 
 To use a custom domain:
 
@@ -80,7 +93,7 @@ To use a custom domain:
 2. Click **Set up a custom domain**
 3. Enter your domain name and follow the instructions
 
-### 7. Automatic Deployments
+### 8. Automatic Deployments
 
 After setup, any push to your main branch will trigger an automatic deployment to Cloudflare Pages.
 

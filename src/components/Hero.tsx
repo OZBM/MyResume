@@ -68,14 +68,14 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="w-full md:w-1/2 flex justify-center md:justify-end"
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-            {/* Placeholder for profile image */}
-            <div className="text-gray-500 dark:text-gray-400 text-center p-4">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 mx-auto mb-2">
-                <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
-              </svg>
-              <p className="text-sm">Omar's Profile</p>
-            </div>
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
+            <Image
+              src="/images/profile.jpg"
+              alt="Omar Ben Mustapha"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </motion.div>
       </div>
