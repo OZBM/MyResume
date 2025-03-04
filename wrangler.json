@@ -1,17 +1,9 @@
 {
   "name": "myresume",
-  "account_id": "91eb7e32455be6db955ee86cf66753c3",
   "compatibility_date": "2024-11-01",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
   },
-  "upload_source_maps": true,
-  "pages_build_output_dir": ".open-next/assets",
-  "env": {
-    "GEMINI_API_KEY": "AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8"
-  },
-  "vars": {
-    "GEMINI_API_KEY": "AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8"
-  }
+  "upload_source_maps": true
 }

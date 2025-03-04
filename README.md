@@ -76,7 +76,7 @@ For the GitHub Actions workflow to deploy correctly, you need to add your Gemini
 2. Click on **Settings** > **Secrets and variables** > **Actions**
 3. Click **New repository secret**
 4. Name: `GEMINI_API_KEY`
-5. Value: Your Gemini API key (e.g., `AIzaSyDJNM9v8vJk9BmOiNJirnP2VbVvvAbECO8`)
+5. Value: Your Gemini API key (e.g., `XXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
 6. Click **Add secret**
 
 This secret is used by the GitHub Actions workflow to pass the API key to both the build process and the Cloudflare deployment.

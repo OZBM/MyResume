@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Define types for our skill objects
 type BasicSkill = {
@@ -22,6 +24,98 @@ type Skill = BasicSkill | SkillWithDescription;
 type SkillCategory = {
   category: string;
   skills: Skill[];
+};
+
+// Photo Gallery component
+const PhotoGallery = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [photos, setPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Import all photos from the Instagram PICS folder
+    const importPhotos = async () => {
+      try {
+        const photoFiles = [
+          '/images/Instagram PICS/11242756_928669347194668_784016389_n_17841502528046031.jpg',
+          '/images/Instagram PICS/11254233_467215903439601_1233738469_n_17841946456046031.jpg',
+          '/images/Instagram PICS/11287981_1588122558107659_1027456602_n_17841833656046031.jpg',
+          '/images/Instagram PICS/11311589_831524820272039_2103592396_n_17841755092046031.jpg',
+          '/images/Instagram PICS/11312264_1771058639787243_1716291026_n_17841833902046031.jpg',
+          '/images/Instagram PICS/11312396_483346795162706_898454407_n_17841555742046031.jpg',
+          '/images/Instagram PICS/11313727_410117469174650_1375066756_n_17841761506046031.jpg',
+          '/images/Instagram PICS/11330549_1011485135543431_913053939_n_17841672589046031.jpg',
+          '/images/Instagram PICS/11330790_649795088488788_1583999782_n_17841946780046031.jpg',
+          '/images/Instagram PICS/11333767_1484791551811534_305982951_n_17841604744046031.jpg',
+          '/images/Instagram PICS/11334503_1581231125430783_814906578_n_17841761152046031.jpg',
+          '/images/Instagram PICS/11351747_1614372848803653_1003159593_n_17841939106046031.jpg'
+        ];
+        setPhotos(photoFiles);
+      } catch (error) {
+        console.error("Error loading photos:", error);
+      }
+    };
+    
+    importPhotos();
+  }, []);
+
+  const openFullscreen = (photo: string) => {
+    setSelectedImage(photo);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when fullscreen is open
+  };
+
+  const closeFullscreen = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = ''; // Restore scrolling
+  };
+
+  return (
+    <div className="mt-4">
+      {/* Photo Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {photos.map((photo, index) => (
+          <div
+            key={index}
+            className="aspect-square relative overflow-hidden rounded cursor-pointer transition-all hover:opacity-90"
+            onClick={() => openFullscreen(photo)}
+          >
+            <Image
+              src={photo}
+              alt={`Photography sample ${index + 1}`}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Fullscreen Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={closeFullscreen}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full">
+            <Image
+              src={selectedImage}
+              alt="Full size photograph"
+              fill
+              sizes="100vw"
+              className="object-contain"
+            />
+            <button
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
+              onClick={closeFullscreen}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 const Skills = () => {
@@ -118,9 +212,10 @@ const Skills = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <h4 className="font-medium text-primary mb-2">Photography</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                 Passionate about photography, especially film photography. Skilled in color profiles, advanced digital techniques.
               </p>
+              <PhotoGallery />
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <h4 className="font-medium text-primary mb-2">Technology</h4>
