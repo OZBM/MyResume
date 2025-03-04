@@ -30,6 +30,6 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: Sv5gCNN6ZahxKGaigy-cql9oxaBu4iAu1tQDDE1c
           command: pages deploy .open-next/assets --project-name=myresume
           workingDirectory: .
