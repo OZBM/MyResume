@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -40,6 +41,11 @@ const Header = () => {
             <span className="text-2xl font-bold text-primary">Omar BM</span>
           </Link>
 
+          {/* Theme Toggle */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+            <ThemeToggle />
+          </div>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {navItems.map((item) => (
@@ -53,12 +59,18 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Navigation Toggle */}
-          <button
-            className="md:hidden text-secondary dark:text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
+          <div className="flex items-center space-x-4">
+            {/* Desktop Theme Toggle (Mobile version is in the menu) */}
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+            
+            {/* Mobile Navigation Toggle */}
+            <button
+              className="md:hidden text-secondary dark:text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
             {isMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,8 +101,9 @@ const Header = () => {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-            )}
-          </button>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -114,6 +127,14 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Theme Toggle */}
+              <div className="pt-4 pb-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-secondary dark:text-white">Theme</span>
+                  <ThemeToggle />
+                </div>
+              </div>
             </nav>
           </div>
         </motion.div>

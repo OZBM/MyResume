@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { cn } from "@/lib/utils";
 
 // Define types for our skill objects
 type BasicSkill = {
@@ -165,35 +167,47 @@ const Skills = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="card"
+              className="overflow-hidden"
             >
-              <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-6">
-                {category.category}
-              </h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-1">
-                      <span className="font-medium text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                      {skill.description ? (
-                        <span className="text-primary font-medium">{skill.description}</span>
-                      ) : (
-                        <span className="text-primary font-medium">{skill.level}/100</span>
-                      )}
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 0.8, delay: 0.1 * skillIndex }}
-                        viewport={{ once: true }}
-                        className="h-2.5 rounded-full bg-primary"
-                      ></motion.div>
-                    </div>
+              <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={3}
+                />
+                <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+                  <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-6">
+                    {category.category}
+                  </h3>
+                  <div className="space-y-6">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex}>
+                        <div className="flex justify-between mb-1">
+                          <span className="font-medium text-gray-700 dark:text-gray-300">
+                            {skill.name}
+                          </span>
+                          {skill.description ? (
+                            <span className="text-primary font-medium">{skill.description}</span>
+                          ) : (
+                            <span className="text-primary font-medium">{skill.level}/100</span>
+                          )}
+                        </div>
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 0.8, delay: 0.1 * skillIndex }}
+                            viewport={{ once: true }}
+                            className="h-2.5 rounded-full bg-primary"
+                          ></motion.div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -204,40 +218,82 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 card"
+          className="mt-12 overflow-hidden"
         >
-          <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-4">
-            Additional Skills & Interests
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <h4 className="font-medium text-primary mb-2">Photography</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                Passionate about photography, especially film photography. Skilled in color profiles, advanced digital techniques.
-              </p>
-              <PhotoGallery />
-            </div>
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <h4 className="font-medium text-primary mb-2">Technology</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                Passionate about technology, statistics, electronics. Experience with oscilloscope, Raspberry Pi, and research papers.
-              </p>
-              <div className="w-full flex justify-center overflow-hidden rounded-lg">
-                <iframe
-                  width="100%"
-                  height="250"
-                  frameBorder="0"
-                  src="https://www.shadertoy.com/embed/WfXSRX?gui=false&t=10&paused=false&muted=false"
-                  allowFullScreen
-                  className="max-w-full"
-                ></iframe>
+          <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
+            <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+              <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-4">
+                Additional Skills & Interests
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                  />
+                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
+                    <h4 className="font-medium text-primary mb-2">Photography</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                      Passionate about photography, especially film photography. Skilled in color profiles, advanced digital techniques.
+                    </p>
+                    <PhotoGallery />
+                  </div>
+                </div>
+                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                  />
+                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
+                    <h4 className="font-medium text-primary mb-2">Technology</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                      Passionate about technology, statistics, electronics. Experience with oscilloscope, Raspberry Pi, and research papers.
+                    </p>
+                    <div className="w-full flex justify-center overflow-hidden rounded-lg">
+                      <iframe
+                        width="100%"
+                        height="250"
+                        frameBorder="0"
+                        src="https://www.shadertoy.com/embed/WfXSRX?gui=false&t=10&paused=false&muted=false"
+                        allowFullScreen
+                        className="max-w-full"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                  />
+                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
+                    <h4 className="font-medium text-primary mb-2">Other Interests</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Music, scuba diving, spearfishing, video games, game mechanics, and more.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <h4 className="font-medium text-primary mb-2">Other Interests</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Music, scuba diving, spearfishing, video games, game mechanics, and more.
-              </p>
             </div>
           </div>
         </motion.div>
