@@ -32,7 +32,7 @@ jobs:
         with:
           apiToken: Sv5gCNN6ZahxKGaigy-cql9oxaBu4iAu1tQDDE1c
           accountId: 91eb7e32455be6db955ee86cf66753c3
-          command: pages deploy out --project-name=myresume --branch production
+          command: pages deploy out --project-name=myresume --branch main
           workingDirectory: .
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
