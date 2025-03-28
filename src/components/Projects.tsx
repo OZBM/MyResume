@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaCode, FaGamepad, FaVrCardboard, FaMobileAlt } from "react-icons/fa";
+import { FaCode, FaGamepad, FaVrCardboard, FaMobileAlt, FaLaptopCode } from "react-icons/fa";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
 
@@ -51,6 +51,14 @@ const Projects = () => {
       description: "Created an augmented reality game to promote tourism in Tunisia, highlighting cultural and historical sites.",
       category: ["ar", "mobile"],
       technologies: ["AR Development", "Unity", "Geolocation", "Cultural Mapping"],
+    },
+    {
+      id: 7,
+      title: "FingerMagic: Hand-Tracking Drawing Tool",
+      description: "Developed a web-based creative tool that uses webcam hand-tracking to let users draw in the air with their finger. Features multiple line smoothing algorithms and various artistic effects.",
+      category: ["web", "creative"],
+      technologies: ["HTML5", "JavaScript", "CSS", "MediaPipe", "Canvas API"],
+      tryItLink: "/FingerMagic/index.html"
     }
   ];
 
@@ -126,10 +134,20 @@ const Projects = () => {
           >
             <FaCode className="mr-1.5" /> AR
           </button>
+          <button
+            onClick={() => setFilter("web")}
+            className={`px-4 py-2 rounded-md transition-colors flex items-center text-sm font-medium ${
+              filter === "web"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
+            }`}
+          >
+            <FaLaptopCode className="mr-1.5" /> Web
+          </button>
         </div>
 
-        {/* Grid layout remains, gap increased */}
-        <ul className="grid grid-cols-1 grid-rows-none gap-6 md:grid-cols-12 md:grid-rows-3 lg:gap-8 xl:max-h-[42rem] xl:grid-rows-2">
+        {/* Grid layout - adjusted to fix overlapping issue */}
+        <ul className="grid grid-cols-1 grid-rows-none gap-6 md:grid-cols-12 md:grid-rows-4 lg:gap-8 xl:grid-rows-3">
           {filteredProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -139,6 +157,7 @@ const Projects = () => {
               icon={getCategoryIcon(project.category)}
               technologies={project.technologies}
               categories={project.category}
+              tryItLink={project.tryItLink}
             />
           ))}
         </ul>
@@ -154,11 +173,12 @@ interface ProjectCardProps {
   description: React.ReactNode;
   technologies: string[];
   categories: string[];
+  tryItLink?: string;
 }
 
-const ProjectCard = ({ area, icon, title, description, technologies, categories }: ProjectCardProps) => {
+const ProjectCard = ({ area, icon, title, description, technologies, categories, tryItLink }: ProjectCardProps) => {
   return (
-    <li className={cn("min-h-[14rem] list-none group", area)}>
+    <li className={cn("min-h-[14rem] list-none group relative", area)}> {/* Added relative positioning */}
       {/* Apply card-glow, adjust border/padding */}
       <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
         {/* GlowingEffect might need adjustments */}
@@ -191,9 +211,9 @@ const ProjectCard = ({ area, icon, title, description, technologies, categories 
 
           {/* Technologies (Hover Overlay) and Categories */}
           <div className="mt-auto pt-4"> {/* Push tags to bottom */}
-            {/* Updated Hover Overlay */}
-            <div className="absolute inset-0 bg-primary/80 dark:bg-primary-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-xl">
-              <div className="text-primary-foreground text-center p-4">
+            {/* Updated Hover Overlay - Added background to inner div */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-xl">
+              <div className="bg-primary dark:bg-primary-dark text-primary-foreground text-center p-4 rounded-lg"> {/* Added background and rounded corners */}
                 <h4 className="font-semibold mb-2 text-sm">Technologies</h4>
                 <div className="flex flex-wrap justify-center gap-1.5">
                   {technologies.map((tech, idx) => (
@@ -219,6 +239,24 @@ const ProjectCard = ({ area, icon, title, description, technologies, categories 
           </div> {/* Closing div for mt-auto */}
         </div> {/* Closing div for relative flex h-full */}
       </div> {/* Closing div for relative h-full rounded-2xl */}
+
+      {/* Try It Now button - Moved outside the main card content div and positioned absolutely */}
+      {tryItLink && (
+        <a 
+          href={tryItLink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          // Adjusted positioning and z-index
+          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-20 px-4 py-1.5 bg-primary dark:bg-primary-dark text-primary-foreground rounded-md text-sm font-medium flex items-center justify-center gap-1.5 transition-all hover:bg-primary/90 dark:hover:bg-primary-dark/90 focus:outline-none focus:ring-2 focus:ring-primary/50 dark:focus:ring-primary-dark/50 group-hover:transform group-hover:scale-105"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Try It Now
+        </a>
+      )}
     </li>
   );
 };
@@ -227,11 +265,12 @@ const ProjectCard = ({ area, icon, title, description, technologies, categories 
 function getGridArea(index: number): string {
   const gridAreas = [
     "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
-    "md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]",
-    "md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]",
-    "md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]",
-    "md:[grid-area:3/1/4/7] xl:[grid-area:2/8/3/13]",
-    "md:[grid-area:3/7/4/13] lg:hidden"
+    "md:[grid-area:1/7/2/13] xl:[grid-area:1/5/2/9]",
+    "md:[grid-area:2/1/3/7] xl:[grid-area:1/9/2/13]",
+    "md:[grid-area:2/7/3/13] xl:[grid-area:2/1/3/5]",
+    "md:[grid-area:3/1/4/7] xl:[grid-area:2/5/3/9]",
+    "md:[grid-area:3/7/4/13] xl:[grid-area:2/9/3/13]",
+    "md:[grid-area:4/1/5/13] xl:[grid-area:3/1/4/13]"
   ];
 
   return index < gridAreas.length ? gridAreas[index] : "md:col-span-6 lg:col-span-4";
@@ -245,6 +284,8 @@ function getCategoryIcon(categories: string[]): React.ReactNode {
     return <FaMobileAlt className="h-4 w-4" />;
   } else if (categories.includes('gaming')) {
     return <FaGamepad className="h-4 w-4" />;
+  } else if (categories.includes('web')) {
+    return <FaLaptopCode className="h-4 w-4" />;
   } else {
     return <FaCode className="h-4 w-4" />;
   }

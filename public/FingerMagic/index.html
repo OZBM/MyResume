@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Drawing with Hand Tracking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Air Drawing</h1>
+        <div class="canvas-container">
+            <video id="video" playsinline></video>
+            <canvas id="drawing-canvas"></canvas>
+            <canvas id="hand-canvas"></canvas>
+        </div>
+        <div class="controls">
+            <button id="save-btn" class="control-btn" title="Save Drawing">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+            </button>
+            <button id="color-btn" class="control-btn" title="Change Color">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                </svg>
+            </button>
+            <button id="size-btn" class="control-btn" title="Change Line Size">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" stroke-width="3"></line>
+                </svg>
+            </button>
+            <button id="shape-btn" class="control-btn" title="Change Line Shape">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 3h16a2 2 0 0 1 2 2v6a10 10 0 0 1-10 10A10 10 0 0 1 2 11V5a2 2 0 0 1 2-2z"></path>
+                </svg>
+            </button>
+            <button id="clear-btn" class="control-btn" title="Clear Canvas">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+            </button>
+            <button id="smooth-btn" class="control-btn" title="Smoothing Settings">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 21c1.5-2.9 4-5.5 8-5.5s6.5 2.6 8 5.5"></path>
+                    <path d="M4 3c1.5 2.9 4 5.5 8 5.5s6.5-2.6 8-5.5"></path>
+                </svg>
+            </button>
+            <button id="scaling-btn" class="control-btn" title="Line Scaling Mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="21" y1="6" x2="3" y2="6" stroke-width="4"></line>
+                    <line x1="21" y1="12" x2="3" y2="12" stroke-width="2"></line>
+                    <line x1="21" y1="18" x2="3" y2="18" stroke-width="1"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div id="color-wheel" class="hidden">
+            <div class="palette-tabs">
+                <button class="palette-tab active" data-palette="vibrant">Vibrant</button>
+                <button class="palette-tab" data-palette="pastels">Pastels</button>
+                <button class="palette-tab" data-palette="earth">Earth</button>
+                <button class="palette-tab" data-palette="monochrome">Mono</button>
+            </div>
+            
+            <!-- Vibrant Palette -->
+            <div class="color-palette vibrant">
+                <div class="palette-title">Vibrant Colors</div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#FF595E" style="background-color: #FF595E;"></div>
+                    <div class="color-option" data-color="#FFCA3A" style="background-color: #FFCA3A;"></div>
+                    <div class="color-option" data-color="#8AC926" style="background-color: #8AC926;"></div>
+                    <div class="color-option" data-color="#1982C4" style="background-color: #1982C4;"></div>
+                    <div class="color-option" data-color="#6A4C93" style="background-color: #6A4C93;"></div>
+                </div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#FF4D6D" style="background-color: #FF4D6D;"></div>
+                    <div class="color-option" data-color="#FF9E00" style="background-color: #FF9E00;"></div>
+                    <div class="color-option" data-color="#00B402" style="background-color: #00B402;"></div>
+                    <div class="color-option" data-color="#00BBF9" style="background-color: #00BBF9;"></div>
+                    <div class="color-option" data-color="#9B5DE5" style="background-color: #9B5DE5;"></div>
+                </div>
+            </div>
+            
+            <!-- Pastels Palette -->
+            <div class="color-palette pastels hidden">
+                <div class="palette-title">Pastel Colors</div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#FFADAD" style="background-color: #FFADAD;"></div>
+                    <div class="color-option" data-color="#FFD6A5" style="background-color: #FFD6A5;"></div>
+                    <div class="color-option" data-color="#FDFFB6" style="background-color: #FDFFB6;"></div>
+                    <div class="color-option" data-color="#CAFFBF" style="background-color: #CAFFBF;"></div>
+                    <div class="color-option" data-color="#9BF6FF" style="background-color: #9BF6FF;"></div>
+                </div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#BDB2FF" style="background-color: #BDB2FF;"></div>
+                    <div class="color-option" data-color="#FFC6FF" style="background-color: #FFC6FF;"></div>
+                    <div class="color-option" data-color="#E4C1F9" style="background-color: #E4C1F9;"></div>
+                    <div class="color-option" data-color="#A0C4FF" style="background-color: #A0C4FF;"></div>
+                    <div class="color-option" data-color="#D8F3DC" style="background-color: #D8F3DC;"></div>
+                </div>
+            </div>
+            
+            <!-- Earth Palette -->
+            <div class="color-palette earth hidden">
+                <div class="palette-title">Earth Tones</div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#582F0E" style="background-color: #582F0E;"></div>
+                    <div class="color-option" data-color="#7F4F24" style="background-color: #7F4F24;"></div>
+                    <div class="color-option" data-color="#936639" style="background-color: #936639;"></div>
+                    <div class="color-option" data-color="#A68A64" style="background-color: #A68A64;"></div>
+                    <div class="color-option" data-color="#B6AD90" style="background-color: #B6AD90;"></div>
+                </div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#354F52" style="background-color: #354F52;"></div>
+                    <div class="color-option" data-color="#52796F" style="background-color: #52796F;"></div>
+                    <div class="color-option" data-color="#84A98C" style="background-color: #84A98C;"></div>
+                    <div class="color-option" data-color="#CAD2C5" style="background-color: #CAD2C5;"></div>
+                    <div class="color-option" data-color="#5F464B" style="background-color: #5F464B;"></div>
+                </div>
+            </div>
+            
+            <!-- Monochrome Palette -->
+            <div class="color-palette monochrome hidden">
+                <div class="palette-title">Monochrome</div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#000000" style="background-color: #000000;"></div>
+                    <div class="color-option" data-color="#262626" style="background-color: #262626;"></div>
+                    <div class="color-option" data-color="#434343" style="background-color: #434343;"></div>
+                    <div class="color-option" data-color="#696969" style="background-color: #696969;"></div>
+                    <div class="color-option" data-color="#8D8D8D" style="background-color: #8D8D8D;"></div>
+                </div>
+                <div class="color-options">
+                    <div class="color-option" data-color="#B1B1B1" style="background-color: #B1B1B1;"></div>
+                    <div class="color-option" data-color="#D1D1D1" style="background-color: #D1D1D1;"></div>
+                    <div class="color-option" data-color="#E8E8E8" style="background-color: #E8E8E8;"></div>
+                    <div class="color-option" data-color="#F5F5F5" style="background-color: #F5F5F5;"></div>
+                    <div class="color-option" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="size-selector" class="hidden">
+            <div class="size-options">
+                <div class="size-option" data-size="3">Small</div>
+                <div class="size-option" data-size="6">Medium</div>
+                <div class="size-option" data-size="12">Large</div>
+            </div>
+        </div>
+        
+        <div id="shape-selector" class="hidden">
+            <div class="brush-title">Artistic Brushes</div>
+            <div class="brush-categories">
+                <button class="brush-category active" data-category="artistic">Artistic</button>
+                <button class="brush-category" data-category="texture">Texture</button>
+                <button class="brush-category" data-category="effect">Effect</button>
+            </div>
+            
+            <!-- Artistic Brushes Category -->
+            <div class="brush-options artistic">
+                <div class="brush-option" data-shape="round">
+                    <div class="brush-preview round-preview"></div>
+                    <div class="brush-name">Classic</div>
+                </div>
+                <div class="brush-option" data-shape="pencil">
+                    <div class="brush-preview pencil-preview"></div>
+                    <div class="brush-name">Pencil</div>
+                </div>
+                <div class="brush-option" data-shape="brush">
+                    <div class="brush-preview brush-preview"></div>
+                    <div class="brush-name">Paintbrush</div>
+                </div>
+                <div class="brush-option" data-shape="marker">
+                    <div class="brush-preview marker-preview"></div>
+                    <div class="brush-name">Marker</div>
+                </div>
+            </div>
+            
+            <!-- Texture Brushes Category -->
+            <div class="brush-options texture hidden">
+                <div class="brush-option" data-shape="chalk">
+                    <div class="brush-preview chalk-preview"></div>
+                    <div class="brush-name">Chalk</div>
+                </div>
+                <div class="brush-option" data-shape="splatter">
+                    <div class="brush-preview splatter-preview"></div>
+                    <div class="brush-name">Splatter</div>
+                </div>
+                <div class="brush-option" data-shape="fur">
+                    <div class="brush-preview fur-preview"></div>
+                    <div class="brush-name">Fur</div>
+                </div>
+                <div class="brush-option" data-shape="dots">
+                    <div class="brush-preview dots-preview"></div>
+                    <div class="brush-name">Dotted</div>
+                </div>
+            </div>
+            
+            <!-- Effect Brushes Category -->
+            <div class="brush-options effect hidden">
+                <div class="brush-option" data-shape="neon">
+                    <div class="brush-preview neon-preview"></div>
+                    <div class="brush-name">Neon</div>
+                </div>
+                <div class="brush-option" data-shape="pixel">
+                    <div class="brush-preview pixel-preview"></div>
+                    <div class="brush-name">Pixel</div>
+                </div>
+                <div class="brush-option" data-shape="rainbow">
+                    <div class="brush-preview rainbow-preview"></div>
+                    <div class="brush-name">Rainbow</div>
+                </div>
+                <div class="brush-option" data-shape="galaxy">
+                    <div class="brush-preview galaxy-preview"></div>
+                    <div class="brush-name">Galaxy</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="scaling-selector" class="hidden">
+            <div class="scaling-title">Line Scaling Mode</div>
+            <div class="scaling-options">
+                <div class="scaling-option active" data-scaling="depth">
+                    <div class="scaling-icon depth-icon"></div>
+                    <div class="scaling-info">
+                        <div class="scaling-name">Depth-Based</div>
+                        <div class="scaling-desc">Line thickness based on finger depth</div>
+                    </div>
+                </div>
+                <div class="scaling-option" data-scaling="speed">
+                    <div class="scaling-icon speed-icon"></div>
+                    <div class="scaling-info">
+                        <div class="scaling-name">Speed-Based</div>
+                        <div class="scaling-desc">Thinner lines when moving faster</div>
+                    </div>
+                </div>
+                <div class="scaling-option" data-scaling="hybrid">
+                    <div class="scaling-icon hybrid-icon"></div>
+                    <div class="scaling-info">
+                        <div class="scaling-name">Hybrid</div>
+                        <div class="scaling-desc">Mix of depth and speed factors</div>
+                    </div>
+                </div>
+                <div class="scaling-option" data-scaling="pressure">
+                    <div class="scaling-icon pressure-icon"></div>
+                    <div class="scaling-info">
+                        <div class="scaling-name">Pressure Simulation</div>
+                        <div class="scaling-desc">Mimics pressure sensitivity</div>
+                    </div>
+                </div>
+                <div class="scaling-option" data-scaling="calligraphy">
+                    <div class="scaling-icon calligraphy-icon"></div>
+                    <div class="scaling-info">
+                        <div class="scaling-name">Calligraphy</div>
+                        <div class="scaling-desc">Direction-based thickness</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaling-preview">
+                <canvas id="scaling-preview-canvas" width="280" height="80"></canvas>
+            </div>
+        </div>
+        
+        <div id="smoothing-controls" class="hidden">
+            <div class="smoothing-options">
+                <div class="smoothing-label">Smoothing Strength</div>
+                <div class="smoothing-value" id="smoothing-value">90%</div>
+                <input type="range" id="smoothing-slider" min="0" max="100" value="90" class="slider" />
+                <div class="smoothing-option-row">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="smoothing-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Enable Smoothing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load MediaPipe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    
+    <!-- Load our script -->
+    <script src="script.js"></script>
+</body>
+</html>
