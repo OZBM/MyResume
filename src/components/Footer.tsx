@@ -7,50 +7,57 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary text-white py-10">
+    // Updated background, text colors, padding
+    <footer className="bg-muted dark:bg-dark-card/50 text-muted-foreground py-10 border-t border-border">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column 1: Name & Socials */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Omar Ben Mustapha</h3>
-            <p className="text-gray-300 mb-4">
+            {/* Updated heading color */}
+            <h3 className="text-lg font-semibold mb-4 text-foreground dark:text-dark-fg">Omar Ben Mustapha</h3>
+            {/* Updated paragraph color */}
+            <p className="text-sm mb-4">
               Unity, Mobile, AI, LLM and VR Specialist
             </p>
+            {/* Updated icon colors and hover states */}
             <div className="flex space-x-4">
               <a
                 href="https://www.linkedin.com/in/omar-zakaria-ben"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin size={24} />
+                <FaLinkedin size={20} /> {/* Slightly smaller icons */}
               </a>
               <a
                 href="mailto:contact@hazenstudio.com"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 aria-label="Email"
               >
-                <FaEnvelope size={24} />
+                <FaEnvelope size={20} />
               </a>
               <a
                 href="https://hazenstudio.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 aria-label="Website"
               >
-                <FaGlobe size={24} />
+                <FaGlobe size={20} />
               </a>
             </div>
           </div>
 
+          {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            {/* Updated heading color */}
+            <h3 className="text-lg font-semibold mb-4 text-foreground dark:text-dark-fg">Quick Links</h3>
+            <ul className="space-y-2 text-sm"> {/* Added text-sm */}
               <li>
                 <Link
                   href="#about"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 >
                   About Me
                 </Link>
@@ -58,7 +65,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="#experience"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 >
                   Experience
                 </Link>
@@ -66,7 +73,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="#skills"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 >
                   Skills
                 </Link>
@@ -74,7 +81,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="#projects"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 >
                   Projects
                 </Link>
@@ -82,7 +89,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="#contact"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary dark:hover:text-primary-dark transition-colors"
                 >
                   Contact
                 </Link>
@@ -90,21 +97,25 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Column 3: Location */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Location</h3>
-            <p className="text-gray-300 mb-2">
+             {/* Updated heading color */}
+            <h3 className="text-lg font-semibold mb-4 text-foreground dark:text-dark-fg">Location</h3>
+             {/* Updated paragraph colors */}
+            <p className="text-sm mb-2">
               Based in Tunisia
             </p>
-            <p className="text-gray-300 mb-2">
+            <p className="text-sm mb-2">
               Available for relocation to France
             </p>
-            <p className="text-gray-300 mb-2">
+            <p className="text-sm mb-2">
               Open to remote opportunities worldwide
             </p>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+        {/* Updated border and text color */}
+        <div className="border-t border-border/50 mt-10 pt-6 text-center text-xs text-muted-foreground/80">
           <p>
             &copy; {currentYear} Omar Zakaria Ben Mustapha. All rights reserved.
           </p>

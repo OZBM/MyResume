@@ -26,11 +26,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
-        <ThemeProvider defaultTheme="system" storageKey="theme">
-          <div className="min-h-screen">
-            {children}
+    // Add suppressHydrationWarning for next-themes compatibility
+    // Add scrollbar-custom to apply custom scrollbar styles
+    <html lang="en" className="scroll-smooth scrollbar-custom" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}> {/* Added antialiased for smoother fonts */}
+        {/* Use the custom ThemeProvider with its supported props */}
+        <ThemeProvider
+          defaultTheme="system" // 'system' is supported by the custom provider logic
+          storageKey="theme"
+        >
+          <div className="relative flex min-h-screen flex-col"> {/* Added relative and flex-col for potential sticky footer later */}
+            {/* Header could go here if needed globally */}
+            <main className="flex-grow">{children}</main> {/* Wrap children in main, allow it to grow */}
+            {/* Footer could go here if needed globally */}
           </div>
         </ThemeProvider>
       </body>

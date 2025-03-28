@@ -31,43 +31,37 @@ const Header = () => {
     <header
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 dark:bg-secondary/90 backdrop-blur-sm shadow-md"
-          : "bg-transparent"
+          ? "bg-card/90 dark:bg-dark-card/90 backdrop-blur-sm border-b border-border shadow-sm" // Use card colors, add border
+          : "bg-transparent border-b border-transparent" // Transparent border initially
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/">
-            <span className="text-2xl font-bold text-primary">Omar BM</span>
+          {/* Logo */}
+          <Link href="/" className="text-2xl font-bold text-primary dark:text-primary-dark hover:opacity-80 transition-opacity">
+            Omar BM
           </Link>
 
-          {/* Theme Toggle */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
-            <ThemeToggle />
-          </div>
-
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-secondary dark:text-white hover:text-primary transition-colors duration-300"
+                className="text-foreground/80 dark:text-dark-fg/80 hover:text-primary dark:hover:text-primary-dark transition-colors duration-200 text-sm font-medium"
               >
                 {item.name}
               </Link>
             ))}
+            {/* Theme Toggle integrated into desktop nav */}
+            <ThemeToggle />
           </nav>
 
-          <div className="flex items-center space-x-4">
-            {/* Desktop Theme Toggle (Mobile version is in the menu) */}
-            <div className="hidden md:block">
-              <ThemeToggle />
-            </div>
-            
-            {/* Mobile Navigation Toggle */}
+          {/* Mobile Navigation & Theme Toggle */}
+          <div className="flex items-center md:hidden">
+            <ThemeToggle />
             <button
-              className="md:hidden text-secondary dark:text-white"
+              className="ml-3 text-foreground dark:text-dark-fg hover:text-primary dark:hover:text-primary-dark" // Use foreground colors
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -108,12 +102,13 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-white dark:bg-secondary"
+          className="md:hidden bg-card dark:bg-dark-card border-t border-border shadow-lg" // Use card colors, add border
         >
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
@@ -121,20 +116,13 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-secondary dark:text-white hover:text-primary transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-foreground dark:text-dark-fg hover:text-primary dark:hover:text-primary-dark transition-colors duration-200 py-2 text-center" // Use foreground, centered text
+                  onClick={() => setIsMenuOpen(false)} // Close menu on click
                 >
                   {item.name}
                 </Link>
               ))}
-              
-              {/* Mobile Theme Toggle */}
-              <div className="pt-4 pb-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-secondary dark:text-white">Theme</span>
-                  <ThemeToggle />
-                </div>
-              </div>
+              {/* Mobile Theme Toggle is already outside this menu */}
             </nav>
           </div>
         </motion.div>

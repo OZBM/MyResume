@@ -54,78 +54,82 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = filter === "all" 
-    ? projects 
+  const filteredProjects = filter === "all"
+    ? projects
     : projects.filter(project => project.category.includes(filter));
 
   return (
-    <section id="projects" className="py-16">
+    // Adjusted padding
+    <section id="projects" className="py-20 md:py-28">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16" // Increased margin
         >
-          <h2 className="section-heading">Projects</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mt-2 mb-8"></div>
+          {/* Updated heading and divider */}
+          <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary-dark mb-4">Projects</h2>
+          <div className="w-24 h-1 bg-primary dark:bg-primary-dark mx-auto"></div>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {/* Updated Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12"> {/* Increased margin bottom */}
           <button
             onClick={() => setFilter("all")}
-            className={`px-4 py-2 rounded-md transition-colors ${
+            className={`px-4 py-2 rounded-md transition-colors text-sm font-medium ${
               filter === "all"
-                ? "bg-primary text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
             }`}
           >
             All
           </button>
           <button
             onClick={() => setFilter("unity")}
-            className={`px-4 py-2 rounded-md transition-colors flex items-center ${
+            className={`px-4 py-2 rounded-md transition-colors flex items-center text-sm font-medium ${
               filter === "unity"
-                ? "bg-primary text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
             }`}
           >
-            <FaGamepad className="mr-2" /> Unity
+            <FaGamepad className="mr-1.5" /> Unity
           </button>
           <button
             onClick={() => setFilter("vr")}
-            className={`px-4 py-2 rounded-md transition-colors flex items-center ${
+            className={`px-4 py-2 rounded-md transition-colors flex items-center text-sm font-medium ${
               filter === "vr"
-                ? "bg-primary text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
             }`}
           >
-            <FaVrCardboard className="mr-2" /> VR
+            <FaVrCardboard className="mr-1.5" /> VR
           </button>
           <button
             onClick={() => setFilter("mobile")}
-            className={`px-4 py-2 rounded-md transition-colors flex items-center ${
+            className={`px-4 py-2 rounded-md transition-colors flex items-center text-sm font-medium ${
               filter === "mobile"
-                ? "bg-primary text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
             }`}
           >
-            <FaMobileAlt className="mr-2" /> Mobile
+            <FaMobileAlt className="mr-1.5" /> Mobile
           </button>
           <button
             onClick={() => setFilter("ar")}
-            className={`px-4 py-2 rounded-md transition-colors flex items-center ${
+            className={`px-4 py-2 rounded-md transition-colors flex items-center text-sm font-medium ${
               filter === "ar"
-                ? "bg-primary text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                ? "bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 dark:hover:bg-muted/80"
             }`}
           >
-            <FaCode className="mr-2" /> AR
+            <FaCode className="mr-1.5" /> AR
           </button>
         </div>
 
-        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-6 xl:max-h-[42rem] xl:grid-rows-2">
+        {/* Grid layout remains, gap increased */}
+        <ul className="grid grid-cols-1 grid-rows-none gap-6 md:grid-cols-12 md:grid-rows-3 lg:gap-8 xl:max-h-[42rem] xl:grid-rows-2">
           {filteredProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -155,7 +159,9 @@ interface ProjectCardProps {
 const ProjectCard = ({ area, icon, title, description, technologies, categories }: ProjectCardProps) => {
   return (
     <li className={cn("min-h-[14rem] list-none group", area)}>
-      <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+      {/* Apply card-glow, adjust border/padding */}
+      <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
+        {/* GlowingEffect might need adjustments */}
         <GlowingEffect
           spread={40}
           glow={true}
@@ -164,48 +170,55 @@ const ProjectCard = ({ area, icon, title, description, technologies, categories 
           inactiveZone={0.01}
           borderWidth={3}
         />
-        <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-          <div className="relative flex flex-1 flex-col justify-between gap-3">
-            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+        {/* Updated card styles */}
+        <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm">
+          <div className="relative flex flex-1 flex-col justify-start gap-3"> {/* Use justify-start */}
+            {/* Updated icon background and color */}
+            <div className="w-fit rounded-lg border border-border bg-muted p-2 text-primary dark:text-primary-dark">
               {icon}
             </div>
-            <div className="space-y-3">
-              <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+            <div className="space-y-2"> {/* Reduced space */}
+              {/* Updated title color */}
+              <h3 className="pt-0.5 text-lg md:text-xl font-semibold text-foreground dark:text-dark-fg">
                 {title}
               </h3>
-              <p className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+              {/* Updated description color */}
+              <p className="text-sm text-foreground/80 dark:text-dark-fg/80">
                 {description}
               </p>
             </div>
-            
-            {/* Technologies and Categories */}
-            <div className="mt-4">
-              <div className="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 rounded-xl">
-                <div className="text-white text-center p-4">
-                  <h4 className="font-semibold mb-2">Technologies</h4>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {technologies.map((tech, idx) => (
-                      <span key={idx} className="px-2 py-1 bg-primary bg-opacity-70 rounded text-sm">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+          </div>
+
+          {/* Technologies (Hover Overlay) and Categories */}
+          <div className="mt-auto pt-4"> {/* Push tags to bottom */}
+            {/* Updated Hover Overlay */}
+            <div className="absolute inset-0 bg-primary/80 dark:bg-primary-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-xl">
+              <div className="text-primary-foreground text-center p-4">
+                <h4 className="font-semibold mb-2 text-sm">Technologies</h4>
+                <div className="flex flex-wrap justify-center gap-1.5">
+                  {technologies.map((tech, idx) => (
+                    // Updated tech tag style
+                    <span key={idx} className="px-2 py-0.5 bg-white/20 dark:bg-black/20 rounded text-xs">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {categories.map((cat, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs"
-                  >
-                    {cat}
-                  </span>
-                ))}
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
+            {/* Updated Category Tags */}
+            <div className="flex flex-wrap gap-1.5">
+              {categories.map((cat, idx) => (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 bg-muted text-muted-foreground rounded text-xs"
+                >
+                  {cat}
+                </span>
+              ))}
+            </div> {/* Closing div for flex flex-wrap */}
+          </div> {/* Closing div for mt-auto */}
+        </div> {/* Closing div for relative flex h-full */}
+      </div> {/* Closing div for relative h-full rounded-2xl */}
     </li>
   );
 };
@@ -220,7 +233,7 @@ function getGridArea(index: number): string {
     "md:[grid-area:3/1/4/7] xl:[grid-area:2/8/3/13]",
     "md:[grid-area:3/7/4/13] lg:hidden"
   ];
-  
+
   return index < gridAreas.length ? gridAreas[index] : "md:col-span-6 lg:col-span-4";
 }
 

@@ -146,20 +146,22 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-16">
+    // Adjusted padding
+    <section id="skills" className="py-20 md:py-28">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16" // Increased margin
         >
-          <h2 className="section-heading">Skills & Expertise</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mt-2 mb-8"></div>
+          {/* Updated heading and divider */}
+          <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary-dark mb-4">Skills & Expertise</h2>
+          <div className="w-24 h-1 bg-primary dark:bg-primary-dark mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"> {/* Increased gap */}
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
@@ -167,9 +169,11 @@ const Skills = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="overflow-hidden"
+              className="overflow-hidden" // Keep overflow hidden
             >
-              <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+              {/* Apply card-glow, adjust border/padding */}
+              <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
+                {/* GlowingEffect might need adjustments */}
                 <GlowingEffect
                   spread={40}
                   glow={true}
@@ -178,30 +182,35 @@ const Skills = () => {
                   inactiveZone={0.01}
                   borderWidth={3}
                 />
-                <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-                  <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-6">
+                {/* Updated card styles */}
+                <div className="relative flex h-full flex-col justify-start gap-6 overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm"> {/* Use justify-start */}
+                  {/* Updated heading color */}
+                  <h3 className="text-2xl font-semibold text-primary dark:text-primary-dark">
                     {category.category}
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-5"> {/* Adjusted spacing */}
                     {category.skills.map((skill, skillIndex) => (
                       <div key={skillIndex}>
-                        <div className="flex justify-between mb-1">
-                          <span className="font-medium text-gray-700 dark:text-gray-300">
+                        <div className="flex justify-between mb-1 text-sm"> {/* Use text-sm */}
+                          {/* Updated text color */}
+                          <span className="font-medium text-foreground dark:text-dark-fg">
                             {skill.name}
                           </span>
+                          {/* Updated text color */}
                           {skill.description ? (
-                            <span className="text-primary font-medium">{skill.description}</span>
+                            <span className="text-primary dark:text-primary-dark font-medium">{skill.description}</span>
                           ) : (
-                            <span className="text-primary font-medium">{skill.level}/100</span>
+                            <span className="text-primary dark:text-primary-dark font-medium">{skill.level}%</span> // Added % sign
                           )}
                         </div>
-                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                        {/* Updated progress bar colors using CSS variables */}
+                        <div className="w-full bg-[hsl(var(--muted))] rounded-full h-2"> {/* Use muted, slightly thinner */}
                           <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             transition={{ duration: 0.8, delay: 0.1 * skillIndex }}
                             viewport={{ once: true }}
-                            className="h-2.5 rounded-full bg-primary"
+                            className="h-2 rounded-full bg-[hsl(var(--primary))]" // Use primary
                           ></motion.div>
                         </div>
                       </div>
@@ -218,54 +227,68 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 overflow-hidden"
+          className="mt-16 overflow-hidden" // Increased margin top
         >
-          <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+          
+          {/* Apply card-glow, adjust border/padding */}
+          <div className="relative h-full  rounded-2xl border border-border p-1 card-glow">
+            {/* GlowingEffect might need adjustments */}
             <GlowingEffect
-              spread={40}
+              spread={20}
               glow={true}
               disabled={false}
               proximity={64}
               inactiveZone={0.01}
               borderWidth={3}
             />
-            <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-              <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-4">
+            
+            {/* Updated card styles */}
+            <div className="relative flex h-full flex-col justify-start gap-6 overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm"> {/* Use justify-start */}
+              {/* Updated heading color */}
+              <h3 className="text-2xl font-semibold text-primary dark:text-primary-dark">
                 Additional Skills & Interests
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> {/* Increased gap */}
+                {/* Photography Card */}
+                <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
                   <GlowingEffect
-                    spread={40}
+                    spread={20} // Reduced spread for sub-cards
                     glow={true}
                     disabled={false}
                     proximity={64}
                     inactiveZone={0.01}
-                    borderWidth={3}
+                    borderWidth={2} // Reduced border width
                   />
-                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
-                    <h4 className="font-medium text-primary mb-2">Photography</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                  {/* Updated sub-card styles */}
+                  <div className="relative h-full flex flex-col justify-start gap-4 overflow-hidden rounded-xl border border-border bg-card p-4 shadow-sm transition-colors">
+                    {/* Updated heading color */}
+                    <h4 className="font-medium text-primary dark:text-primary-dark">Photography</h4>
+                    {/* Updated text color */}
+                    <p className="text-foreground/80 dark:text-dark-fg/80 text-sm mb-3">
                       Passionate about photography, especially film photography. Skilled in color profiles, advanced digital techniques.
                     </p>
-                    <PhotoGallery />
+                    <PhotoGallery /> {/* Assuming PhotoGallery styles are okay or will be adjusted separately */}
                   </div>
                 </div>
-                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                {/* Technology Card */}
+                <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
                   <GlowingEffect
-                    spread={40}
+                    spread={20} // Reduced spread
                     glow={true}
                     disabled={false}
                     proximity={64}
                     inactiveZone={0.01}
-                    borderWidth={3}
+                    borderWidth={2} // Reduced border width
                   />
-                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
-                    <h4 className="font-medium text-primary mb-2">Technology</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                   {/* Updated sub-card styles */}
+                  <div className="relative h-full flex flex-col justify-start gap-4 overflow-hidden rounded-xl border border-border bg-card p-4 shadow-sm transition-colors">
+                     {/* Updated heading color */}
+                    <h4 className="font-medium text-primary dark:text-primary-dark">Technology</h4>
+                     {/* Updated text color */}
+                    <p className="text-foreground/80 dark:text-dark-fg/80 text-sm mb-4">
                       Passionate about technology, statistics, electronics. Experience with oscilloscope, Raspberry Pi, and research papers.
                     </p>
-                    <div className="w-full flex justify-center overflow-hidden rounded-lg">
+                    <div className="w-full flex justify-center overflow-hidden rounded-lg border border-border"> {/* Added border to iframe container */}
                       <iframe
                         width="100%"
                         height="250"
@@ -277,18 +300,22 @@ const Skills = () => {
                     </div>
                   </div>
                 </div>
-                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                 {/* Other Interests Card */}
+                <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
                   <GlowingEffect
-                    spread={40}
+                    spread={20} // Reduced spread
                     glow={true}
                     disabled={false}
                     proximity={64}
                     inactiveZone={0.01}
-                    borderWidth={3}
+                    borderWidth={2} // Reduced border width
                   />
-                  <div className="relative h-full flex flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-4 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] transition-colors">
-                    <h4 className="font-medium text-primary mb-2">Other Interests</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                   {/* Updated sub-card styles */}
+                  <div className="relative h-full flex flex-col justify-start gap-4 overflow-hidden rounded-xl border border-border bg-card p-4 shadow-sm transition-colors">
+                     {/* Updated heading color */}
+                    <h4 className="font-medium text-primary dark:text-primary-dark">Other Interests</h4>
+                     {/* Updated text color */}
+                    <p className="text-foreground/80 dark:text-dark-fg/80 text-sm">
                       Music, scuba diving, spearfishing, video games, game mechanics, and more.
                     </p>
                   </div>

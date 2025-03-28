@@ -8,22 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FF9800", // Orange color from your resume
-        secondary: "#333333", // Dark gray from your resume
-        tertiary: "#555555", // Lighter gray
-        accent: "#FFFFFF", // White
-        dark: "#1A1A1A", // Almost black
-        
-        // shadcn colors
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        neutral: {
+          light: "#f8fafc",
+          dark: "#0f172a",
+        },
+        primary: {
+          light: "#0ea5e9",
+          dark: "#0369a1",
+        },
+        secondary: {
+          light: "#818cf8",
+          dark: "#4f46e5",
+        },
+        accent: {
+          light: "#f472b6",
+          dark: "#db2777",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
+        border: "hsl(var(--border))",
       },
       borderRadius: {
         lg: "var(--radius)",

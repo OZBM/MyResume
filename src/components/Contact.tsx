@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaGlobe } from "react-icons/fa"; // Added FaGlobe
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
 
@@ -42,32 +42,36 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gray-50 dark:bg-secondary/30">
+    // Removed section background, adjusted padding
+    <section id="contact" className="py-20 md:py-28">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16" // Increased margin
         >
-          <h2 className="section-heading">Get In Touch</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mt-2 mb-8"></div>
-          <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-            Feel free to reach out if you want to collaborate on a project, discuss potential opportunities, 
+          {/* Updated heading, divider, and paragraph styles */}
+          <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary-dark mb-4">Get In Touch</h2>
+          <div className="w-24 h-1 bg-primary dark:bg-primary-dark mx-auto mb-6"></div>
+          <p className="text-foreground/80 dark:text-dark-fg/80 max-w-xl mx-auto">
+            Feel free to reach out if you want to collaborate on a project, discuss potential opportunities,
             or just want to say hello.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"> {/* Increased gap */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden"
+            className="relative overflow-hidden" // Keep overflow hidden
           >
-            <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+            {/* Apply card-glow, adjust border/padding */}
+            <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
+              {/* GlowingEffect might need adjustments */}
               <GlowingEffect
                 spread={40}
                 glow={true}
@@ -76,59 +80,63 @@ const Contact = () => {
                 inactiveZone={0.01}
                 borderWidth={3}
               />
-              <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-                <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-6">
+              {/* Updated card styles */}
+              <div className="relative flex h-full flex-col justify-start gap-6 overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm"> {/* Use justify-start */}
+                {/* Updated heading color */}
+                <h3 className="text-2xl font-semibold text-primary dark:text-primary-dark">
                   Contact Information
                 </h3>
                 
                 <div className="space-y-6">
+                  {/* Updated icon, label, link, and description colors */}
                   <div className="flex items-start">
-                    <FaEnvelope className="text-primary mr-4 text-xl mt-1" />
+                    <FaEnvelope className="text-primary dark:text-primary-dark mr-4 text-xl mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-lg text-secondary dark:text-white">Email</h4>
-                      <a 
-                        href="mailto:contact@hazenstudio.com" 
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary"
+                      <h4 className="font-medium text-lg text-foreground dark:text-dark-fg">Email</h4>
+                      <a
+                        href="mailto:contact@hazenstudio.com"
+                        className="text-foreground/80 dark:text-dark-fg/80 hover:text-primary dark:hover:text-primary-dark break-all"
                       >
                         contact@hazenstudio.com
                       </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-sm text-muted-foreground dark:text-dark-fg/70 mt-1">
                         Feel free to email me anytime
                       </p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <FaLinkedin className="text-primary mr-4 text-xl mt-1" />
+                    <FaLinkedin className="text-primary dark:text-primary-dark mr-4 text-xl mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-lg text-secondary dark:text-white">LinkedIn</h4>
-                      <a 
-                        href="https://www.linkedin.com/in/omar-zakaria-ben" 
+                      <h4 className="font-medium text-lg text-foreground dark:text-dark-fg">LinkedIn</h4>
+                      <a
+                        href="https://www.linkedin.com/in/omar-zakaria-ben"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary"
+                        className="text-foreground/80 dark:text-dark-fg/80 hover:text-primary dark:hover:text-primary-dark break-all"
                       >
                         linkedin.com/in/omar-zakaria-ben
                       </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-sm text-muted-foreground dark:text-dark-fg/70 mt-1">
                         Connect with me professionally
                       </p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <FaGithub className="text-primary mr-4 text-xl mt-1" />
+                    {/* Assuming this should be a website icon, using FaGlobe as placeholder */}
+                    <FaGlobe className="text-primary dark:text-primary-dark mr-4 text-xl mt-1 flex-shrink-0" /> 
                     <div>
-                      <h4 className="font-medium text-lg text-secondary dark:text-white">Website</h4>
-                      <a 
-                        href="https://hazenstudio.com" 
+                      <h4 className="font-medium text-lg text-foreground dark:text-dark-fg">Website</h4>
+                      <a
+                        href="https://hazenstudio.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary"
+                        className="text-foreground/80 dark:text-dark-fg/80 hover:text-primary dark:hover:text-primary-dark break-all"
                       >
                         hazenstudio.com
                       </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-sm text-muted-foreground dark:text-dark-fg/70 mt-1">
                         Visit my company website
                       </p>
                     </div>
@@ -143,9 +151,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden"
+            className="relative overflow-hidden" // Keep overflow hidden
           >
-            <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+            {/* Apply card-glow, adjust border/padding */}
+            <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
+              {/* GlowingEffect might need adjustments */}
               <GlowingEffect
                 spread={40}
                 glow={true}
@@ -154,21 +164,26 @@ const Contact = () => {
                 inactiveZone={0.01}
                 borderWidth={3}
               />
-              <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-                <h3 className="text-2xl font-semibold text-secondary dark:text-white mb-6">
+              {/* Updated card styles */}
+              <div className="relative flex h-full flex-col justify-start gap-6 overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm"> {/* Use justify-start */}
+                {/* Updated heading color */}
+                <h3 className="text-2xl font-semibold text-primary dark:text-primary-dark">
                   Send Me a Message
                 </h3>
                 
+                {/* Updated success message style */}
                 {submitStatus === "success" ? (
-                  <div className="bg-green-100 dark:bg-green-900/30 p-4 rounded-lg text-green-700 dark:text-green-300">
+                  <div className="bg-primary/10 dark:bg-primary-dark/10 border border-primary/30 dark:border-primary-dark/30 p-4 rounded-lg text-primary dark:text-primary-dark">
                     <p>Thank you for your message! I'll get back to you as soon as possible.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">
+                  <form onSubmit={handleSubmit} className="space-y-4"> {/* Added space-y */}
+                    <div> {/* Removed mb-4 */}
+                      {/* Updated label color */}
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground/90 dark:text-dark-fg/90 mb-1.5">
                         Your Name
                       </label>
+                      {/* Updated input styles */}
                       <input
                         type="text"
                         id="name"
@@ -176,14 +191,16 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full p-3 border border-border rounded-md bg-background text-foreground dark:bg-dark-bg dark:text-dark-fg focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                       />
                     </div>
                     
-                    <div className="mb-4">
-                      <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    <div> {/* Removed mb-4 */}
+                      {/* Updated label color */}
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground/90 dark:text-dark-fg/90 mb-1.5">
                         Your Email
                       </label>
+                      {/* Updated input styles */}
                       <input
                         type="email"
                         id="email"
@@ -191,14 +208,16 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full p-3 border border-border rounded-md bg-background text-foreground dark:bg-dark-bg dark:text-dark-fg focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                       />
                     </div>
                     
-                    <div className="mb-4">
-                      <label htmlFor="subject" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    <div> {/* Removed mb-4 */}
+                      {/* Updated label color */}
+                      <label htmlFor="subject" className="block text-sm font-medium text-foreground/90 dark:text-dark-fg/90 mb-1.5">
                         Subject
                       </label>
+                      {/* Updated input styles */}
                       <input
                         type="text"
                         id="subject"
@@ -206,14 +225,16 @@ const Contact = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full p-3 border border-border rounded-md bg-background text-foreground dark:bg-dark-bg dark:text-dark-fg focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                       />
                     </div>
                     
-                    <div className="mb-4">
-                      <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">
+                    <div> {/* Removed mb-4 */}
+                      {/* Updated label color */}
+                      <label htmlFor="message" className="block text-sm font-medium text-foreground/90 dark:text-dark-fg/90 mb-1.5">
                         Message
                       </label>
+                      {/* Updated textarea styles */}
                       <textarea
                         id="message"
                         name="message"
@@ -221,23 +242,25 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full p-3 border border-border rounded-md bg-background text-foreground dark:bg-dark-bg dark:text-dark-fg focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                       ></textarea>
                     </div>
                     
+                    {/* Updated error message style */}
                     {submitStatus === "error" && (
-                      <div className="mb-4 bg-red-100 dark:bg-red-900/30 p-4 rounded-lg text-red-700 dark:text-red-300">
+                      <div className="bg-destructive/10 border border-destructive/30 p-4 rounded-lg text-destructive dark:text-destructive">
                         <p>There was an error sending your message. Please try again later.</p>
                       </div>
                     )}
                     
+                    {/* Updated button styles */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full p-3 rounded-md font-medium text-white transition-colors ${
+                      className={`w-full p-3 rounded-md font-medium transition-colors ${
                         isSubmitting
-                          ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
-                          : "bg-primary hover:bg-primary/90"
+                          ? "bg-muted text-muted-foreground cursor-not-allowed"
+                          : "bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-primary-dark dark:text-primary-foreground dark:hover:bg-primary-dark/90"
                       }`}
                     >
                       {isSubmitting ? "Sending..." : "Send Message"}

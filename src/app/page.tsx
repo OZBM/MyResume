@@ -25,7 +25,8 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-dark">
+    // Removed bg-gray-50 dark:bg-dark - handled by body now
+    <main className="flex flex-col min-h-screen"> 
       <Header />
       <Hero />
       
@@ -46,9 +47,10 @@ export default function Home() {
       <Footer />
       
       {/* Chat Button */}
+      {/* Chat Button - Updated styles */}
       <button
         onClick={() => setIsChatOpen(!isChatOpen)}
-        className="fixed bottom-6 right-6 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 transition-all z-50"
+        className="fixed bottom-6 right-6 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:bg-primary/90 dark:hover:bg-primary-dark/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-all z-50"
         aria-label="Chat with AI Assistant"
       >
         {isChatOpen ? (
@@ -69,9 +71,10 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          className="fixed bottom-20 right-6 w-[350px] sm:w-[400px] h-[500px] bg-white dark:bg-secondary rounded-lg shadow-xl z-50 overflow-hidden"
+          // Chat Window - Updated styles using card variables
+          className="fixed bottom-20 right-6 w-[350px] sm:w-[400px] h-[500px] bg-card text-card-foreground border border-border rounded-lg shadow-xl z-50 overflow-hidden flex flex-col"
         >
-          <ChatBox />
+          <ChatBox /> 
         </motion.div>
       )}
     </main>

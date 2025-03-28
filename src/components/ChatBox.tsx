@@ -136,17 +136,17 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Chat header */}
-      <div className="bg-primary text-white px-4 py-3 rounded-t-lg">
+    <div className="flex flex-col h-full bg-card text-card-foreground"> {/* Use card background/text */}
+      {/* Chat header - Use primary color */}
+      <div className="bg-primary dark:bg-primary-dark text-primary-foreground px-4 py-3 rounded-t-lg flex-shrink-0">
         <div className="flex items-center">
           <FaRobot className="mr-2" />
-          <h3 className="font-semibold">Chat with Omar's AI Assistant</h3>
+          <h3 className="font-semibold text-sm">Chat with Omar's AI Assistant</h3> {/* Slightly smaller text */}
         </div>
       </div>
 
-      {/* Chat messages */}
-      <div className="flex-1 overflow-y-auto p-4 bg-white dark:bg-gray-800 scrollbar-custom">
+      {/* Chat messages - Use background color */}
+      <div className="flex-1 overflow-y-auto p-4 bg-background dark:bg-dark-bg scrollbar-custom">
         <div className="space-y-4">
           {messages.map((message: Message) => (
             <div
@@ -160,11 +160,12 @@ const ChatBox = () => {
                   message.role === "user" ? "flex-row-reverse space-x-reverse" : ""
                 }`}
               >
+                {/* Icon container styles */}
                 <div
-                  className={`rounded-full p-2 ${
+                  className={`rounded-full p-2 flex-shrink-0 ${
                     message.role === "user"
-                      ? "bg-primary text-white"
-                      : "bg-gray-200 dark:bg-gray-700"
+                      ? "bg-primary dark:bg-primary-dark text-primary-foreground" // User icon bg/text
+                      : "bg-muted text-muted-foreground" // Assistant icon bg/text
                   }`}
                 >
                   {message.role === "user" ? (
@@ -173,38 +174,41 @@ const ChatBox = () => {
                     <FaRobot size={14} />
                   )}
                 </div>
+                {/* Message bubble styles */}
                 <div
-                  className={`rounded-lg px-4 py-2 ${
+                  className={`rounded-lg px-3 py-2 ${ // Slightly less padding
                     message.role === "user"
-                      ? "bg-primary text-white"
-                      : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+                      ? "bg-primary dark:bg-primary-dark text-primary-foreground" // User message bg/text
+                      : "bg-muted text-muted-foreground" // Assistant message bg/text
                   }`}
                 >
-                  <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+                  <p className="whitespace-pre-wrap text-sm">{message.content}</p> {/* Text color inherited */}
                 </div>
               </div>
             </div>
           ))}
 
+          {/* Loading indicator styles */}
           {isLoading && (
             <div className="flex justify-start">
               <div className="flex items-start space-x-2 max-w-[80%]">
-                <div className="rounded-full p-2 bg-gray-200 dark:bg-gray-700">
+                <div className="rounded-full p-2 bg-muted text-muted-foreground flex-shrink-0">
                   <FaRobot size={14} />
                 </div>
-                <div className="rounded-lg px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-pulse"></div>
-                    <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-pulse delay-75"></div>
-                    <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-pulse delay-150"></div>
+                <div className="rounded-lg px-3 py-2 bg-muted text-muted-foreground">
+                  <div className="flex space-x-1 items-center h-5"> {/* Ensure height consistency */}
+                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-pulse"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-pulse delay-100"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-pulse delay-200"></div>
                   </div>
                 </div>
               </div>
             </div>
           )}
 
+          {/* Error message styles */}
           {error && (
-            <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 p-2 rounded text-sm">
+            <div className="bg-destructive/10 border border-destructive/30 text-destructive p-2 rounded text-sm">
               {error}
             </div>
           )}
@@ -213,23 +217,25 @@ const ChatBox = () => {
         </div>
       </div>
 
-      {/* Chat input */}
-      <form onSubmit={handleSubmit} className="p-3 bg-gray-100 dark:bg-gray-700 rounded-b-lg">
+      {/* Chat input area styles */}
+      <form onSubmit={handleSubmit} className="p-3 bg-muted dark:bg-dark-card/50 border-t border-border rounded-b-lg flex-shrink-0">
         <div className="flex items-center">
+          {/* Input field styles */}
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 px-4 py-2 rounded-l-md border-0 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-600 text-gray-900 dark:text-white"
+            className="flex-1 px-4 py-2 rounded-l-md border border-border bg-background text-foreground dark:bg-dark-bg dark:text-dark-fg focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
             disabled={isLoading}
           />
+          {/* Send button styles */}
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="px-4 py-2 rounded-r-md bg-primary text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="px-4 py-2 rounded-r-md bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed transition-colors"
           >
-            <FaPaperPlane />
+            <FaPaperPlane size={16} /> {/* Slightly larger icon */}
           </button>
         </div>
       </form>
