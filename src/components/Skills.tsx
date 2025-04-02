@@ -169,7 +169,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="overflow-hidden" // Keep overflow hidden
+              className="overflow-visible" // Keep overflow hidden
             >
               {/* Apply card-glow, adjust border/padding */}
               <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
@@ -227,7 +227,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-16 overflow-hidden" // Increased margin top
+          className="mt-16 overflow-visible" // Increased margin top
         >
           
           {/* Apply card-glow, adjust border/padding */}

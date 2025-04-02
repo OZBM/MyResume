@@ -67,7 +67,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden" // Keep overflow hidden
+            className="relative overflow-visible" // Keep overflow hidden
           >
             {/* Apply card-glow, adjust border/padding */}
             <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
@@ -151,7 +151,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden" // Keep overflow hidden
+            className="relative overflow-visible" // Keep overflow hidden
           >
             {/* Apply card-glow, adjust border/padding */}
             <div className="relative h-full rounded-2xl border border-border p-1 card-glow">

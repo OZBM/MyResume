@@ -80,7 +80,7 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden" // Keep overflow hidden
+              className="relative overflow-visible" // Keep overflow hidden
             >
               {/* Apply card-glow, adjust border */}
               <div className="relative h-full rounded-2xl border border-border border-l-4 border-l-primary dark:border-l-primary-dark p-1 card-glow"> 

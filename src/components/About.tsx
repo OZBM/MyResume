@@ -28,7 +28,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="overflow-hidden" // Keep overflow hidden
+            className="overflow-visible" // Keep overflow hidden
           >
             {/* Apply card-glow effect */}
             <div className="relative h-full rounded-2xl border border-border p-1 card-glow"> 
@@ -72,7 +72,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="overflow-hidden" // Keep overflow hidden
+            className="overflow-visible" // Keep overflow hidden
           >
              {/* Apply card-glow effect */}
             <div className="relative h-full rounded-2xl border border-border p-1 card-glow">
