@@ -93,6 +93,15 @@ const Projects = () => {
       technologies: ["HTML5", "JavaScript", "CSS", "MediaPipe", "Canvas API"],
       tryItLink: "/FingerMagic/index.html",
       gradient: "from-pink-500 to-orange-400",
+    },
+    {
+      id: 8,
+      title: "Simple Construction Company Website",
+      description: "A basic website template for a construction company, showcasing typical sections like services, projects, and contact information.",
+      category: ["web", "template"],
+      technologies: ["HTML", "CSS", "JavaScript"],
+      tryItLink: "/Construction Company WebSite/index.html",
+      gradient: "from-yellow-500 to-amber-600",
     }
   ];
 

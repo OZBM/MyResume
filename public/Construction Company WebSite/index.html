@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildMaster Construction | Excellence in Construction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BuildMaster</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#history">Our Story</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#contact" class="btn-primary">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80'); background-size: cover; background-position: center;">
+        <div class="hero-content">
+            <h1>Building Tomorrow's Infrastructure Today</h1>
+            <p>Excellence in construction, engineering, and project management for over 30 years</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Our Services</a>
+                <a href="#contact" class="btn-secondary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive construction solutions for every industry</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Commercial Construction</h3>
+                    <p>Office buildings, retail spaces, and commercial facilities built to the highest standards.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3>Infrastructure Development</h3>
+                    <p>Roads, bridges, and public works projects that connect communities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industrial Construction</h3>
+                    <p>Manufacturing facilities, power plants, and industrial complexes built for efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>Expert oversight from planning to completion, ensuring on-time and on-budget delivery.</p>
+                </div>
+            </div>
+            <div class="services-cta">
+                <a href="#contact" class="btn-primary">Discuss Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>A showcase of our exceptional work across diverse sectors</p>
+            </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="commercial">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Commercial Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Urban Office Complex</h3>
+                        <p>A state-of-the-art office building in the heart of downtown.</p>
+                        <a href="#" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="infrastructure">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Infrastructure Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Coastal Highway Bridge</h3>
+                        <p>A 2-mile bridge connecting coastal communities.</p>
+                        <a href="#" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="industrial">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Industrial Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Manufacturing Facility</h3>
+                        <p>A modern manufacturing plant designed for maximum efficiency.</p>
+                        <a href="#" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="commercial">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1555652736-e92021d28a39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Commercial Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Retail Shopping Center</h3>
+                        <p>A modern shopping complex with sustainable design features.</p>
+                        <a href="#" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <a href="#" class="btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h2>About BuildMaster Construction</h2>
+                        <p>Building excellence since 1990</p>
+                    </div>
+                    <p>BuildMaster Construction is a leading construction company with over three decades of experience delivering exceptional projects across commercial, infrastructure, and industrial sectors.</p>
+                    <p>Our team of highly skilled professionals is committed to quality, safety, and innovation in every project we undertake. We pride ourselves on building lasting relationships with our clients through transparent communication and reliable service.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>30+</h3>
+                            <p>Years of Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>250+</h3>
+                            <p>Skilled Professionals</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary">Learn More About Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=800&q=80" alt="About BuildMaster Construction">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline Section -->
+    <section id="history" class="history-timeline">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>Building excellence since 1990</p>
+            </div>
+            <div class="timeline-container">
+                <p class="timeline-intro">BuildMaster's roots can be traced back to 1990 when the founding team started its small, local construction company. BuildMaster has since grown to be one of the leading construction and engineering firms across the country.</p>
+                
+                <div class="timeline-navigation">
+                    <button class="timeline-nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="timeline-slider">
+                        <div class="timeline-item">
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="1990 - Foundation">
+                            </div>
+                            <div class="timeline-content">
+                                <h3>1990</h3>
+                                <p>BuildMaster Construction was founded as a small residential contractor with just 5 employees.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="1995 - First Commercial Project">
+                            </div>
+                            <div class="timeline-content">
+                                <h3>1995</h3>
+                                <p>Completed our first major commercial project, a 10-story office building in the downtown area.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="2005 - Expansion">
+                            </div>
+                            <div class="timeline-content">
+                                <h3>2005</h3>
+                                <p>Expanded operations to include infrastructure projects, opening offices in three additional states.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="2010 - Innovation">
+                            </div>
+                            <div class="timeline-content">
+                                <h3>2010</h3>
+                                <p>Pioneered sustainable construction practices, earning our first LEED Platinum certification.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="2023 - Present Day">
+                            </div>
+                            <div class="timeline-content">
+                                <h3>2023</h3>
+                                <p>Today, BuildMaster employs over 250 professionals and has completed more than 500 projects nationwide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="timeline-nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Trusted by industry leaders and organizations</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"BuildMaster Construction delivered our office complex on time and within budget. Their attention to detail and quality workmanship exceeded our expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Client">
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <p>CEO, Smith Enterprises</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The team at BuildMaster was professional, responsive, and highly skilled. They transformed our vision into reality with exceptional results."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Client">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Director, Johnson Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="careers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join Our Team</h2>
+                <p>Build your career with BuildMaster Construction</p>
+            </div>
+            <div class="careers-content">
+                <div class="careers-text">
+                    <p>At BuildMaster Construction, we're always looking for talented individuals who share our passion for excellence in construction. We offer competitive compensation, comprehensive benefits, and opportunities for professional growth.</p>
+                    <h3>Current Openings:</h3>
+                    <ul class="job-listings">
+                        <li>
+                            <h4>Project Manager</h4>
+                            <p>Lead and oversee construction projects from inception to completion.</p>
+                            <a href="#" class="btn-text">Apply Now <i class="fas fa-arrow-right"></i></a>
+                        </li>
+                        <li>
+                            <h4>Civil Engineer</h4>
+                            <p>Design and implement infrastructure solutions for various projects.</p>
+                            <a href="#" class="btn-text">Apply Now <i class="fas fa-arrow-right"></i></a>
+                        </li>
+                        <li>
+                            <h4>Construction Supervisor</h4>
+                            <p>Supervise on-site construction activities and ensure quality standards.</p>
+                            <a href="#" class="btn-text">Apply Now <i class="fas fa-arrow-right"></i></a>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-primary">View All Openings</a>
+                </div>
+                <div class="careers-image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Join Our Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch for your next construction project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type" name="project-type">
+                                <option value="commercial">Commercial</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>123 Construction Way<br>Building City, BC 12345</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@buildmaster.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BuildMaster</h2>
+                    <p>Excellence in construction since 1990</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#history">Our Story</a></li>
+                            <li><a href="#careers">Careers</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Commercial Construction</a></li>
+                            <li><a href="#">Infrastructure Development</a></li>
+                            <li><a href="#">Industrial Construction</a></li>
+                            <li><a href="#">Project Management</a></li>
+                            <li><a href="#">Design-Build</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Connect With Us</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="newsletter">
+                            <h4>Subscribe to our newsletter</h4>
+                            <form>
+                                <input type="email" placeholder="Your email address">
+                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 BuildMaster Construction. All rights reserved.</p>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
