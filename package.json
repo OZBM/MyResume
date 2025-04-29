@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cd public/AMoreComplexConstructionCompanyWebsite && npm install && npm run build && cd ../../.. && next build",
     "start": "next start",
     "lint": "next lint",
     "deploy": "npx open-next build",
