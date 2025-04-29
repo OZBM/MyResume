@@ -102,6 +102,15 @@ const Projects = () => {
       technologies: ["HTML", "CSS", "JavaScript"],
       tryItLink: "/Construction Company WebSite/index.html",
       gradient: "from-yellow-500 to-amber-600",
+    },
+    {
+      id: 9, // Next available ID
+      title: "Advanced Construction Company Website", // Slightly more descriptive title
+      description: "A more complex website template for a construction company, built with React, Vite, and Tailwind CSS, featuring advanced components and layout.",
+      category: ["web", "template", "react"], // Added react category
+      technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"], // Based on file structure
+      tryItLink: "/AMoreComplexConstructionCompanyWebsite/dist/index.html", // Updated path to built version
+      gradient: "from-orange-500 to-red-600", // New gradient
     }
   ];
 
